@@ -3,7 +3,7 @@
 SELECT stats_articleviews.article_views_article_id_fk_id as id, 
 				 stats_articles.title, 
 				 stats_articleviews.change, 
-				 stats_articleviews.count, 
+				 stats_articleviews.count as view_count, 
 				 stats_articleviews.date_added as time_collected,
 				 stats_articles.published_date, 
 				 users_user.username as author
