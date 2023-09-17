@@ -163,3 +163,4 @@ data.csv
 .DS_Store
 ~$*
 pdf-to-database/data/*.*
+airline-routes/data
