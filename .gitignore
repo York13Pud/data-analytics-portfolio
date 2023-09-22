@@ -174,3 +174,6 @@ salaries/data/salary-data.csv
 # ufo sightings
 ufo-sightings/data/ufo-sightings-data.json
 ufo-sightings/data/ufo-sightings-data.csv
+
+# tiktik google reviews
+tiktik-google-reviews/data/tiktok-google-play-reviews.csv
