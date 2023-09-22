@@ -180,3 +180,10 @@ tiktik-google-reviews/data/tiktok-google-play-reviews.csv
 
 # usa tornados
 usa-tornados/data/tornados-data.csv
+
+# apple app store
+apple-app-store-full/data/full_data.csv
+
+# google play store
+google-play-store/data/reviews_data.csv
+google-play-store/data/full_data.csv
