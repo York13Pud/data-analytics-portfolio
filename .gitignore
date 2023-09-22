@@ -163,6 +163,14 @@ data.csv
 .DS_Store
 ~$*
 pdf-to-database/data/*.*
+
+# airline routes
 airline-routes/data
+
+# salaries
 salaries/README.md
 salaries/data/salary-data.csv
+
+# ufo sightings
+ufo-sightings/data/ufo-sightings-data.json
+ufo-sightings/data/ufo-sightings-data.csv
