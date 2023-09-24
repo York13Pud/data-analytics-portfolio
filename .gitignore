@@ -167,23 +167,26 @@ pdf-to-database/data/
 # airline routes
 airline-routes/data
 
+# apple app store
+apple-app-store-full/data/
+
+# british airways reviews
+british-airways-reviews/data/
+
+# google play store
+google-play-store/data/
+
 # salaries
 salaries/data/
-
-# ufo sightings
-ufo-sightings/data/
 
 # tiktik google reviews
 tiktik-google-reviews/data/
 
+# ufo sightings
+ufo-sightings/data/
+
 # usa tornados
 usa-tornados/data/
-
-# apple app store
-apple-app-store-full/data/
-
-# google play store
-google-play-store/data/
 
 # video game sales
 video-game-sales/data/
