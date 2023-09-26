@@ -19,3 +19,6 @@ The source for the data used in this project can be located [here](https://www.v
 7. Perform further EDA and finalise the insights to report on.
 8. Create visualisations and reports.
 9. Create a presentation with the findings.
+
+## Requirements
+
