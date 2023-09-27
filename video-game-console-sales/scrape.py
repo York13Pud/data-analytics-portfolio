@@ -1,5 +1,6 @@
 # -- 0. Import required libraries / modules
 from bs4 import BeautifulSoup as bs
+from pathlib import Path
 import requests
 import pandas as pd
 
@@ -17,7 +18,7 @@ response = requests.get(url = URL, headers = headers)
 soup = bs(response.text, "html.parser")
 
 
-# -- 4. Get the table from the soup:
+# -- 4. Get the table from the soup (there is only one table on the page):
 table = soup.table
 
 
@@ -52,4 +53,5 @@ df = pd.DataFrame(table_data, columns = column_names)
 
 
 # -- 8. Export the contents of the dataframe to a CSV file:
-df.to_csv("./scraped-data.csv", index = False)
+save_to_folder = Path(__file__).resolve().parent
+df.to_csv(f"{save_to_folder}/data/01-original-data.csv", index = False)
