@@ -5,6 +5,9 @@ import requests
 import pandas as pd
 
 
+# -- To-do:
+# 1. Make this a function / class so it can be reused
+
 # -- 1. Define the URL to scrape:
 URL = "https://www.vgchartz.com/charts/platform_totals/Hardware.php"
 
@@ -23,7 +26,7 @@ table = soup.table
 
 
 # -- 5. Process the contents of the table into two lists. First for the column headers
-# ---   and the second for the rows:
+# --    and the second for the rows:
 column_names = []
 table_data = []
 
