@@ -6,7 +6,7 @@ import pandas as pd
 
 
 # -- To-do:
-# 1. Make this a function / class so it can be reused
+# 1. Make this a function / class so it can be reused.
 
 # -- 1. Define the URL to scrape:
 URL = "https://www.vgchartz.com/charts/platform_totals/Hardware.php"
