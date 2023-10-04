@@ -42,14 +42,18 @@ for index, row in sites_to_scrape_df.iterrows():
     browser_settings = browser_headers_df.loc[(browser_headers_df.browser == browser)].iloc[0]
     headers = {"User-Agent": browser_settings.values[2]}
     
+    
     # -- Make a request to the site:
     response = requests.get(url = row.url, headers = headers)
+    
     
     # -- Process the response with bs:
     soup = bs(response.text, "html.parser")
     
+    
     # -- Construct the attributes to use to find the table:
     table_attributes = {}
+    
      
     # -- Check if both an id and a class have been specified for the site.
     # -- If not, don't add them to the table_attributes dict:
@@ -63,9 +67,38 @@ for index, row in sites_to_scrape_df.iterrows():
     else:
         table_attributes.update({"class": row.table_class})
     
-    print(soup.title.text)
-    print(soup.h1.text)
-    print(soup.find_all("table", attrs = table_attributes))
+    
+    column_names = []
+    table_data = []
+        
+    table = soup.find("table", attrs = table_attributes)
+    
+        
+    # -- Look for rows in the HTML table:
+    for item in table.find_all('tr'):
+        
+        # -- Get the column headers:
+        for cell in item.find_all('th'):
+            column_names.append(cell.text)
+        
+        # -- Get the data from the rows:
+        row_data = []
+        
+        for cell in item.find_all('td'):
+            print(cell.text)
+            row_data.append(cell.text)
+                
+        table_data.append(row_data)
 
-    # with open("./html.txt", "w") as output:
-    #     output.write(response.text)
+
+    # -- 6. Remove the blank list from the table_data list:
+    table_data.pop(0)
+
+    # -- 7. Create a dataframe from the two lists:
+    df = pd.DataFrame(table_data, columns = column_names)
+
+    # -- 8. Export the contents of the dataframe to a CSV file:
+    save_to_folder = Path(__file__).resolve().parent
+    df.to_csv(f"{save_to_folder}/01-original-data.csv", index = False)
+    
+    df.to_excel()
