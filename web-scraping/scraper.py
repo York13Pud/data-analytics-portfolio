@@ -8,19 +8,25 @@ import requests
 
 
 # -- Define general constants and variables:
+# -- Folders for various settings:
 APP_DIR = Path(__file__).resolve().parent
-SETTINGS_DIR = "settings"
+LOGS_DIR = f"{APP_DIR}/logs/"
+SETTINGS_DIR = f"{APP_DIR}/settings/"
+SITES_DIR = f"{SETTINGS_DIR}/sites/"
+
+
+# -- Collect info about the Operating System the program is running on:
 OS_INFO = get_os_summary()
 
 
 # -- Import settings from excel files:
 # -- HTTP responses:
-allowed_http_responses_file = f"{APP_DIR}/{SETTINGS_DIR}/allowed-http-responses.xlsx"
+allowed_http_responses_file = f"{SETTINGS_DIR}allowed-http-responses.xlsx"
 allowed_http_responses = pd.read_excel(io = allowed_http_responses_file)
 
 
 # -- Web browser headers:
-browser_headers_file = f"{APP_DIR}/{SETTINGS_DIR}/headers.xlsx"
+browser_headers_file = f"{SETTINGS_DIR}headers.xlsx"
 browser_headers_df = pd.read_excel(io = browser_headers_file)
 
 
@@ -31,7 +37,7 @@ browser_headers_df = browser_headers_df.loc[\
 
 
 # -- The sites to scrape and the browser to use:
-sites_to_scrape_file = f"{APP_DIR}/{SETTINGS_DIR}/sites.xlsx"
+sites_to_scrape_file = f"{SETTINGS_DIR}sites.xlsx"
 sites_to_scrape_df = pd.read_excel(io = sites_to_scrape_file)
 #sites_to_scrape_df.
 
@@ -97,8 +103,9 @@ for index, row in sites_to_scrape_df.iterrows():
     # -- 7. Create a dataframe from the two lists:
     df = pd.DataFrame(table_data, columns = column_names)
 
-    # -- 8. Export the contents of the dataframe to a CSV file:
+    # -- 8. Export the contents of the dataframe to an Excel file:
     save_to_folder = Path(__file__).resolve().parent
-    df.to_csv(f"{save_to_folder}/01-original-data.csv", index = False)
+    # df.to_csv(f"{save_to_folder}/01-original-data.csv", index = False)
     
-    df.to_excel()
+    df.to_excel(excel_writer=f"{save_to_folder}/01-original-data.xlsx", 
+                index = False)
