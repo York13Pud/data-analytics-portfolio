@@ -39,7 +39,7 @@ browser_headers_df = browser_headers_df.loc[\
 # -- The sites to scrape and the browser to use:
 sites_to_scrape_file = f"{SETTINGS_DIR}sites.xlsx"
 sites_to_scrape_df = pd.read_excel(io = sites_to_scrape_file)
-#sites_to_scrape_df.
+
 
 # Perform web scraping:
 for index, row in sites_to_scrape_df.iterrows():
@@ -106,6 +106,12 @@ for index, row in sites_to_scrape_df.iterrows():
     # -- 8. Export the contents of the dataframe to an Excel file:
     save_to_folder = Path(__file__).resolve().parent
     # df.to_csv(f"{save_to_folder}/01-original-data.csv", index = False)
+
+
+def export_to_csv(df,  filepath:str, filename:str):
+    df.to_csv(f"{save_to_folder}/01-original-data.csv", index = False)
     
+    
+def export_to_excel(df, filepath:str, filename:str):
     df.to_excel(excel_writer=f"{save_to_folder}/01-original-data.xlsx", 
                 index = False)
