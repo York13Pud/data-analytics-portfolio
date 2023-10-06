@@ -40,6 +40,9 @@ browser_headers_df = browser_headers_df.loc[\
 # --------------------------------------------------------------------------- #
 # --------------------------------------------------------------------------- #
 
+# -- To-do: Change sites to check to process excel files in settings/sites.
+
+
 
 # -- The sites to scrape and the browser to use:
 sites_to_scrape_file = f"{SETTINGS_DIR}sites.xlsx"
@@ -113,11 +116,3 @@ for index, row in sites_to_scrape_df.iterrows():
     # df.to_csv(f"{save_to_folder}/01-original-data.csv", index = False)
 
 
-# -- To-do: Add date to the file names
-def export_to_csv(df,  filepath:str, filename:str):
-    df.to_csv(f"{save_to_folder}/01-original-data.csv", index = False)
-    
-    
-def export_to_excel(df, filepath:str, filename:str):
-    df.to_excel(excel_writer=f"{save_to_folder}/01-original-data.xlsx", 
-                index = False)
