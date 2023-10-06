@@ -18,6 +18,7 @@ SITES_DIR = f"{SETTINGS_DIR}/sites/"
 # -- Collect info about the Operating System the program is running on:
 OS_INFO = get_os_summary()
 
+# -- To-do: Add error checking. After that is done, add logging.
 
 # -- Import settings from excel files:
 # -- HTTP responses:
@@ -30,10 +31,14 @@ browser_headers_file = f"{SETTINGS_DIR}headers.xlsx"
 browser_headers_df = pd.read_excel(io = browser_headers_file)
 
 
-# -- Filter the browser_header_df for the os and chosen browser:
+# -- Filter the browser_header_df for the O/S:
 browser_headers_df = browser_headers_df.loc[\
                             (browser_headers_df.os == OS_INFO["os_type"])
                             ]
+
+
+# --------------------------------------------------------------------------- #
+# --------------------------------------------------------------------------- #
 
 
 # -- The sites to scrape and the browser to use:
@@ -108,6 +113,7 @@ for index, row in sites_to_scrape_df.iterrows():
     # df.to_csv(f"{save_to_folder}/01-original-data.csv", index = False)
 
 
+# -- To-do: Add date to the file names
 def export_to_csv(df,  filepath:str, filename:str):
     df.to_csv(f"{save_to_folder}/01-original-data.csv", index = False)
     
