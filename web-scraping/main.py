@@ -58,6 +58,7 @@ def main():
         if pages_file == True and processor_file == True:
             # -- To-do: Import module, read xlsx, scrape, soup and export.
             print("Files are present")
+            
             # -- Load processor:
             # -- Import processor module from the current folder:
             module_spec = util.spec_from_file_location("processor", f"{folder}/processor.py")
@@ -76,10 +77,10 @@ def main():
             print("\nPlease check that the files showing as False are present.")
 
     """
-    1. For loop to go over folders in SITES_DIR.
-    2. Check if pages and processor are present.
-    3. If both are true, load the processor module.
-    4. Processor does its job.
+    1. For loop to go over folders in SITES_DIR. Done.
+    2. Check if pages and processor are present. Done.
+    3. If both are true, load the processor module. Done.
+    4. Processor does its job. Done.
 
     """
 
