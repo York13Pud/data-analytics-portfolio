@@ -1,3 +1,10 @@
+# -- Import required libraries / modules:
+from .modules.scraper import url_scraper
+
+import pandas as pd
+
+# -- To-do: make this section a function.
+
 # -- The sites to scrape and the browser to use:
 sites_to_scrape_file = f"{SETTINGS_DIR}sites.xlsx"
 sites_to_scrape_df = pd.read_excel(io = sites_to_scrape_file)
@@ -12,12 +19,14 @@ for index, row in sites_to_scrape_df.iterrows():
     
     
     # -- Make a request to the site:
-    response = requests.get(url = row.url, headers = headers)
+    # response = requests.get(url = row.url, headers = headers)
     
     
     # -- Process the response with bs:
-    soup = bs(response.text, "html.parser")
-    
+    # soup = bs(response.text, "html.parser")
+    soup = url_scraper(url = str(row.url), 
+                       headers = headers, 
+                       parser = html.parser)
     
     # -- Construct the attributes to use to find the table:
     table_attributes = {}
