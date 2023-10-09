@@ -12,12 +12,12 @@ def main():
     # -- Folders for various settings:
     APP_DIR = Path(__file__).resolve().parent
     LOGS_DIR = f"{APP_DIR}/logs/"
+    MODULES_DIR = f"{APP_DIR}/modules/"
     SETTINGS_DIR = f"{APP_DIR}/settings/"
 
     ALL_SITES_DIR = f"{APP_DIR}/sites/"
     SITE_FILES = ["pages.xlsx", "processor.py"]
     SITE_FOLDER_CONTENTS = list(Path(ALL_SITES_DIR).iterdir())
-
 
     # -- Collect info about the Operating System the program is running on:
     OS_INFO = get_os_summary()
@@ -29,23 +29,15 @@ def main():
     allowed_http_responses_file = f"{SETTINGS_DIR}allowed-http-responses.xlsx"
     allowed_http_responses = pd.read_excel(io = allowed_http_responses_file)
 
-
     # -- Web browser headers:
     browser_headers_file = f"{SETTINGS_DIR}headers.xlsx"
     browser_headers_df = pd.read_excel(io = browser_headers_file)
 
-
-    # -- Filter the browser_header_df for the O/S:
-    browser_headers_df = browser_headers_df.loc[\
-                                (browser_headers_df.os == OS_INFO["os_type"])
-                                ]
-
-
-    # --------------------------------------------------------------------------- #
     # --------------------------------------------------------------------------- #
 
     # -- To-do: Change sites to check to process excel files in settings/sites.
 
+    # -- Cycle through the folders in SITE_FOLDER_CONTENTS:
     for folder in SITE_FOLDER_CONTENTS:
         # -- Check if pages and processor files are files:
         pages_file = Path(f"{folder}/{SITE_FILES[0]}").is_file()
@@ -61,13 +53,20 @@ def main():
             
             # -- Load processor:
             # -- Import processor module from the current folder:
+            
+            
             module_spec = util.spec_from_file_location("processor", f"{folder}/processor.py")
             processor_module = util.module_from_spec(module_spec)
             modules["processor"] = processor_module
             module_spec.loader.exec_module(processor_module)
-                    
+            
+            
             # -- Execute the processor:
-            processor_module.testing_things()
+            processor_module.process_scraping(\
+                browser_headers_os = browser_headers_df.loc[\
+                                (browser_headers_df.os == OS_INFO["os_type"])],
+                modules_folder = MODULES_DIR,
+                site_folder = folder)
 
         else:
             # -- To-do: Generate error.
