@@ -1,10 +1,8 @@
 # -- Import required libraries / modules:
 from bs4 import BeautifulSoup as bs
 from importlib import util
-from pathlib import Path
 from requests import get
 from sys import modules
-
 
 import pandas as pd
 
@@ -56,7 +54,8 @@ def processor(allowed_http_responses,
     for index, row in sites_to_scrape_df.iterrows():
         # -- Setup the settings to use for the scraping:
         browser = row.browser_to_use
-        browser_settings = browser_headers_os.loc[(browser_headers_os.browser == browser)].iloc[0]
+        browser_settings = browser_headers_os.loc[(browser_headers_os.browser \
+                                                  == browser)].iloc[0]
         headers = {"User-Agent": browser_settings.values[2]}
         
         # -- Make a request to the site and process the response with bs:
@@ -66,14 +65,17 @@ def processor(allowed_http_responses,
                            allowed_http_responses = allowed_http_responses)
                        
         # -- Import processor module from the current folder:
-        module_spec = util.spec_from_file_location("processor", f"{site_folder}/processor.py")
+        module_spec = util.spec_from_file_location("processor", 
+                                                  f"{site_folder}/processor.py")
         processor_module = util.module_from_spec(module_spec)
         modules["processor"] = processor_module
         module_spec.loader.exec_module(processor_module)
 
         # -- Import the soup processor:
         processor_module.test()
-        # processor_module.process_soup(soup = soup)
+        
+        # processor_module.process_soup(soup = soup, 
+        #                               row_details = row)
         
         # ==================================================================== #
     
