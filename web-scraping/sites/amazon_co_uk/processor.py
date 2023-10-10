@@ -13,7 +13,7 @@ def test():
     
     return
 
-def process_soup(soup: str):
+def process_soup(soup: str, row_details):
     """
     ### Summary:
         This function will process a beautiful soup input to output any data that
@@ -21,7 +21,7 @@ def process_soup(soup: str):
 
     ### Args:
         soup (str): A beautiful soup object that needs to be processed.
-        
+        row_details: The row that the page is on. Mainly used for the html id and class tags.
     ### Returns:
         None
     """
