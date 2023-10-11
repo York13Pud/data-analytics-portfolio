@@ -43,6 +43,7 @@ def url_scraper(url: str,
 
 def processor(allowed_http_responses,
               browser_headers_os,
+              output_folder: str,
               site_folder: str):
 
     # -- Load the contents of the pages.xlsx file to a pd dataframe:
@@ -74,7 +75,8 @@ def processor(allowed_http_responses,
 
         # -- Run the soup processor for the page:
         processor_module.process_soup(soup = soup, 
-                                      row_details = row)
+                                      row_details = row,
+                                      output_folder = output_folder)
         
         # ==================================================================== #
     
