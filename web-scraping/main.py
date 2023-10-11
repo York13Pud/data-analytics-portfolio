@@ -13,6 +13,7 @@ def main():
     # -- Folders for various settings:
     APP_DIR = Path(__file__).resolve().parent
     LOGS_DIR = f"{APP_DIR}/logs/"
+    OUTPUT_DIR = f"{APP_DIR}/output/"
     SETTINGS_DIR = f"{APP_DIR}/settings/"
 
     ALL_SITES_DIR = f"{APP_DIR}/sites/"
@@ -56,6 +57,7 @@ def main():
                 browser_headers_os = browser_headers_df.loc[\
                                 (browser_headers_df.os == OS_INFO["os_type"])],
                 allowed_http_responses = allowed_http_responses_df.values,
+                output_folder = OUTPUT_DIR,
                 site_folder = folder)
 
         else:
