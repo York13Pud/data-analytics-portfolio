@@ -16,7 +16,7 @@ def test():
     
     return
 
-def process_soup(soup: str, row_details):
+def process_soup(soup: str, row_details, output_folder: str):
     """
     ### Summary:
         This function will process a beautiful soup input to output any data that
@@ -71,14 +71,16 @@ def process_soup(soup: str, row_details):
                     
             table_data.append(row_data)        
 
+        # -- Remove the blank list from the table_data list:
+        table_data.pop(0)
+        
         # -- Create a dataframe from the column_names and table_data lists:
         df = pd.DataFrame(table_data, columns = column_names)
-        # print(df.head())
-        
+                
         # -- Export df to an Excel file:
         export_to_excel(df = df, 
-                        filepath = "", 
-                        filename = "") 
+                        filepath = output_folder, 
+                        filename = "test") 
          
         # ==================================================================== #
         return
