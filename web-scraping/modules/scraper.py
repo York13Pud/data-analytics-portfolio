@@ -64,18 +64,17 @@ def processor(allowed_http_responses,
                            parser = "html.parser",
                            allowed_http_responses = allowed_http_responses)
                        
-        # -- Import processor module from the current folder:
+        # -- Import processor module from the current site folder:
+                
         module_spec = util.spec_from_file_location("processor", 
                                                   f"{site_folder}/processor.py")
         processor_module = util.module_from_spec(module_spec)
         modules["processor"] = processor_module
         module_spec.loader.exec_module(processor_module)
 
-        # -- Import the soup processor:
-        processor_module.test()
-        
-        # processor_module.process_soup(soup = soup, 
-        #                               row_details = row)
+        # -- Run the soup processor for the page:
+        processor_module.process_soup(soup = soup, 
+                                      row_details = row)
         
         # ==================================================================== #
     
