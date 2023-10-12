@@ -13,7 +13,7 @@ def test():
     
     return
 
-def process_soup(soup: str, row_details, output_folder: str):
+def process_soup(soup: str, row_details, site_output_folder: str):
     """
     ### Summary:
         This function will process a beautiful soup input to output any data that
