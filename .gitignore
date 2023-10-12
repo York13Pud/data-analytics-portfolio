@@ -193,3 +193,6 @@ video-game-console-sales/data/
 
 # video game sales
 video-game-sales/data/
+
+# web scraping
+web-scraping/output/
