@@ -1,6 +1,11 @@
 # -- Import required libraries / modules:
-import pandas as pd
+from datetime import datetime
+from pathlib import Path
+
 from modules.export_files import export_to_excel
+
+import pandas as pd
+
 
 
 def test():
@@ -16,7 +21,7 @@ def test():
     
     return
 
-def process_soup(soup: str, row_details, output_folder: str):
+def process_soup(soup: str, row_details, site_output_folder: str):
     """
     ### Summary:
         This function will process a beautiful soup input to output any data that
@@ -25,6 +30,7 @@ def process_soup(soup: str, row_details, output_folder: str):
     ### Args:
         soup (str): A beautiful soup object that needs to be processed.
         row_details: The row that the page is on. Mainly used for the html id and class tags.
+        site_output_folder (str): The path to the output folder for the site.
     ### Returns:
         None
     """
@@ -47,7 +53,9 @@ def process_soup(soup: str, row_details, output_folder: str):
     else:
         table_attributes.update({"class": row_details.html_class_1})
     
+    # -- Check if table attributes is empty or not:
     if table_attributes == {}:
+        # -- To-do: Raise warning that nothing was supplied and page skipped:
         print("Nothing to do as no id or class tags have been supplied.")
         return
     else:
@@ -71,16 +79,29 @@ def process_soup(soup: str, row_details, output_folder: str):
                     
             table_data.append(row_data)        
 
+        # -- To-do: Check for empty row and if found delete them.
         # -- Remove the blank list from the table_data list:
         table_data.pop(0)
         
         # -- Create a dataframe from the column_names and table_data lists:
         df = pd.DataFrame(table_data, columns = column_names)
-                
+        
+        # -- Create the output folder(s) as needed and then save the df to an
+        # -- Excel file:
+        todays_date = datetime.now().date()
+        current_time = datetime.now().time()
+        
+        site_output_folder_full_path = Path(str(f"{site_output_folder}/{todays_date.year}/{todays_date.month}/{todays_date.day}/"))
+               
+        try:
+            site_output_folder_full_path.mkdir(parents = True)
+        except FileExistsError:
+            pass
+        
         # -- Export df to an Excel file:
         export_to_excel(df = df, 
-                        filepath = output_folder, 
-                        filename = "test") 
+                        filepath = site_output_folder_full_path, 
+                        filename = str(f"{todays_date}-{current_time}-{row_details.nickname}")) 
          
         # ==================================================================== #
         return
