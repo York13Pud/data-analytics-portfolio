@@ -2,7 +2,10 @@
 from bs4 import BeautifulSoup as bs
 from importlib import util
 from requests import get
+from pathlib import Path
 from sys import modules
+
+from modules.replace import replace_chars
 
 import pandas as pd
 
@@ -50,7 +53,20 @@ def processor(allowed_http_responses,
     sites_to_scrape_file = f"{site_folder}/pages.xlsx"
     sites_to_scrape_df = pd.read_excel(io = sites_to_scrape_file, 
                                        engine='openpyxl')
-   
+    
+    # -- Get the site name from the site_folder:
+    site_name = str(site_folder).rsplit('/', 1)
+    site_name = site_name[1]
+    site_name = replace_chars(text_to_check = site_name)
+    
+    site_output_folder = str(f"{output_folder}{site_name}")
+    # -- Check to see if there is a folder in the output directory for the
+    # -- site. If not, create it. If so, carry on:
+    try:
+        Path.mkdir(site_output_folder)
+    except FileExistsError:
+        pass
+    
     # -- Process the URL's in the pages.xlsx file:
     for index, row in sites_to_scrape_df.iterrows():
         # -- Setup the settings to use for the scraping:
@@ -64,9 +80,8 @@ def processor(allowed_http_responses,
                            headers = headers, 
                            parser = "html.parser",
                            allowed_http_responses = allowed_http_responses)
-                       
-        # -- Import processor module from the current site folder:
-                
+        
+        # -- Import processor module from the current site folder:        
         module_spec = util.spec_from_file_location("processor", 
                                                   f"{site_folder}/processor.py")
         processor_module = util.module_from_spec(module_spec)
@@ -76,7 +91,7 @@ def processor(allowed_http_responses,
         # -- Run the soup processor for the page:
         processor_module.process_soup(soup = soup, 
                                       row_details = row,
-                                      output_folder = output_folder)
+                                      site_output_folder = site_output_folder)
         
         # ==================================================================== #
     
