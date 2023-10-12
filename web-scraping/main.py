@@ -36,8 +36,6 @@ def main():
 
     # ------------------------------------------------------------------------ #
 
-    # -- To-do: Change sites to check to process excel files in settings/sites.
-
     # -- Cycle through the folders in SITE_FOLDER_CONTENTS:
     for folder in SITE_FOLDER_CONTENTS:
         # -- Check if pages and processor files are files:
