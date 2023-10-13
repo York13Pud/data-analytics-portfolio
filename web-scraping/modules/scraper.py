@@ -11,7 +11,7 @@ import pandas as pd
 
 
 def url_scraper(url: str,
-                allowed_http_responses: list, 
+                allowed_http_responses: pd.DataFrame, 
                 headers: dict, 
                 parser: str = "html.parser"):
     """
@@ -40,12 +40,13 @@ def url_scraper(url: str,
         soup = bs(response.text, parser)    
         return soup
     else:
+        # -- To-do: Add log response
         print("404")
         return
         
 
-def processor(allowed_http_responses,
-              browser_headers_os,
+def processor(allowed_http_responses: pd.DataFrame,
+              browser_headers_os: pd.DataFrame,
               output_folder: str,
               site_folder: str):
 
