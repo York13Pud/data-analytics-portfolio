@@ -7,11 +7,12 @@ def replace_chars(text_to_check: str):
         ' ', '.', ',', '!', '*', '/', '+', ':', ';', '\\', '$', '£', '€', '@'
 
     ### Args:
-        text_to_check (str): A string of text to check and replace characters 
-        with underscores.
+        text_to_check (str): 
+            A string of text to check and replace characters with underscores.
 
     ### Returns:
-        string: A string with the 
+        String: 
+            A string with the 
     """
     text_to_replace = [" ", ".", ",", "!", "*", "/", "+", ":", \
                        ";", "\\", "$", "£", "€", "@" ]
