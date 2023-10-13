@@ -89,6 +89,7 @@ def processor(allowed_http_responses: pd.DataFrame,
     site_name = replace_chars(text_to_check = site_name)
     
     site_output_folder = str(f"{output_folder}{site_name}")
+    
     # -- Check to see if there is a folder in the output directory for the
     # -- site. If not, create it. If so, carry on:
     try:
