@@ -81,7 +81,7 @@ def processor(allowed_http_responses: pd.DataFrame,
     # -- Load the contents of the pages.xlsx file to a pd dataframe:
     sites_to_scrape_file = f"{site_folder}/pages.xlsx"
     sites_to_scrape_df = pd.read_excel(io = sites_to_scrape_file, 
-                                       engine='openpyxl')
+                                        engine='openpyxl')
     
     # -- Get the site name from the site_folder:
     site_name = str(site_folder).rsplit('/', 1)
@@ -103,6 +103,7 @@ def processor(allowed_http_responses: pd.DataFrame,
         browser = row.browser_to_use
         browser_settings = browser_headers_os.loc[(browser_headers_os.browser \
                                                   == browser)].iloc[0]
+        
         headers = {"User-Agent": browser_settings.values[2]}
         
         # -- Make a request to the site and process the response with bs:
