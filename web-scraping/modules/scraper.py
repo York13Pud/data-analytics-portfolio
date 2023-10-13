@@ -20,15 +20,19 @@ def url_scraper(url: str,
         BeautifulSoup.
     
     ### Args:
-        url (str): The URL that needs to be scraped.
-        allowed_http_responses (dataframe): A dataframe with a list of HTTP responses.
-        headers (dict): A dictionary containing the required headers.
-        parser (str, optional): The parser that is used to render the web page. 
-                                Options are 'html.parser' or 'xml.parser'.
-                                Defaults to "html.parser".
+        url (str): 
+            The URL that needs to be scraped.
+        allowed_http_responses (dataframe): 
+            A dataframe with a list of HTTP responses.
+        headers (dict): 
+            A dictionary containing the required headers.
+        parser (str, optional): 
+            The parser that is used to render the web page. 
+            Options are 'html.parser' or 'xml.parser'.
+            Defaults to "html.parser".
         
     ### Returns:
-        object: The processed web page as a BeautifulSoup object.
+        Object: The processed web page as a BeautifulSoup object.
     """
     
     # -- Make a request to the site:
@@ -48,7 +52,32 @@ def processor(allowed_http_responses: pd.DataFrame,
               browser_headers_os: pd.DataFrame,
               output_folder: str,
               site_folder: str):
+    """
+    ### Summary:
+        This function will:
+        - process the files that are in the site_folder.
+        - create a folder for the site in the output folder.
+        - Cycle through each row in the pages.xlsx file and pass the output 
+          over to the url_scraper function.
+        - Finally, it will then pass the scraped page (as a beautiful soup object)
+          to the process_soup function in the processor file.
 
+    ### Args:
+        allowed_http_responses (pd.DataFrame): 
+            A dataframe containing the HTTP responses that are used to allow 
+            the processing to continue.
+        browser_headers_os (pd.DataFrame): 
+            A filtered dataframe of browsers and
+            headings for the operating system the program is running on.
+        output_folder (str): 
+            The full path for the root of the output folder.
+        site_folder (str): 
+            The full path for the site folder that is being processed.
+    
+    ### Returns:
+        None
+    """
+    
     # -- Load the contents of the pages.xlsx file to a pd dataframe:
     sites_to_scrape_file = f"{site_folder}/pages.xlsx"
     sites_to_scrape_df = pd.read_excel(io = sites_to_scrape_file, 
@@ -92,7 +121,5 @@ def processor(allowed_http_responses: pd.DataFrame,
         processor_module.process_soup(soup = soup, 
                                       row_details = row,
                                       site_output_folder = site_output_folder)
-        
-        # ==================================================================== #
     
     return
