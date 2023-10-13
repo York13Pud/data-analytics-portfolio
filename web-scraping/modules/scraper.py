@@ -27,7 +27,6 @@ def url_scraper(url: str,
                                 Options are 'html.parser' or 'xml.parser'.
                                 Defaults to "html.parser".
         
-        
     ### Returns:
         object: The processed web page as a BeautifulSoup object.
     """
@@ -35,10 +34,10 @@ def url_scraper(url: str,
     # -- Make a request to the site:
     response = get(url = url, headers = headers)
     
+    # -- Check the status code or the response is ok:
     if response.status_code in allowed_http_responses:
-        # -- Process the response with bs:
-        soup = bs(response.text, parser)    
-        return soup
+        # -- Process and return the response with bs: 
+        return bs(response.text, parser)
     else:
         # -- To-do: Add log response
         print("404")
