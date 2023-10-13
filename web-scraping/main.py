@@ -58,7 +58,7 @@ def main():
 
     # -- Cycle through the folders in SITE_FOLDER_CONTENTS:
     for folder in SITE_FOLDER_CONTENTS:
-        # -- Check if pages and processor files are files:
+        # -- Check if pages and processor files are files (True or False):
         pages_file = Path(f"{folder}/{SITE_FILES[0]}").is_file()
         processor_file = Path(f"{folder}/{SITE_FILES[1]}").is_file()
             
@@ -67,7 +67,6 @@ def main():
         
         # -- Check if pages and processor files are present or not:
         if pages_file == True and processor_file == True:
-            # -- To-do: Import module, read xlsx, scrape, soup and export.
             print("Files are present")
             
             # -- Execute the processor:
