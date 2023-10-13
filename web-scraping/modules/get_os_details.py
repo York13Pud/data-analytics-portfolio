@@ -18,15 +18,15 @@ def get_os_summary():
 
     ### Returns:
         dict: 
-            hostname [String]: 
+            hostname (String): 
                 The O/S name (linux, macos or windows) (lowercase).
-            os_type [String]: 
+            os_type (String): 
                 The system name (lowercase).
-            os_version [String]: 
+            os_version (String): 
                 O/S release version (lowercase).
-            os_arch [String]: 
+            os_arch (String): 
                 The CPU architecture of the system (lowercase).
-            cpu_arch [String]: 
+            cpu_arch (String): 
                 The O/S architecture (32bit or 64bit) (lowercase).
     """
     
