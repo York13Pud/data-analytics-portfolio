@@ -9,6 +9,23 @@ import pandas as pd
 # -- To-do: Add error checking. After that is done, add logging.
 
 def main():
+    """
+    ### Summary:
+        This is the main entry point into the program. It will:
+        - Define the constants and variables that are shared throughout the
+          program.
+        - Gather the operating system information. This is used for filtering 
+          which web browser and settings to use for scraping later on.
+        - Cycle through the sites folder and run actions against each folders
+          contents.
+    
+    ### Args:
+        None.
+    
+    ### Returns:
+        None.
+    """
+    
     # -- Define general constants and variables:
     # -- Folders for various settings:
     APP_DIR = Path(__file__).resolve().parent
@@ -59,12 +76,13 @@ def main():
                 site_folder = folder)
 
         else:
-            # -- To-do: Generate error.
+            # -- To-do: Generate error and log.
             print("\n--- Error ---")
             print(f"pages.xlsx present: {pages_file}")
             print(f"processor.py present: {processor_file}")
             print("\nPlease check that the files showing as False are present.")
-
+    
+    return
 
 # Run the program:
 if __name__ == "__main__":
