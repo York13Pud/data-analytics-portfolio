@@ -1,27 +1,21 @@
 # -- Import required libraries / modules:
+import pandas as pd
 
-def test():
-    """
-    ### Summary:
-        This function will perform a simple print. Only used for testing.
-    
-    ### Returns:
-        Nothing.
-    """
-    
-    print("testing")
-    
-    return
 
-def process_soup(soup: str, row_details, site_output_folder: str):
+def process_soup(soup: str, 
+                 row_details: pd.DataFrame, 
+                 site_output_folder: str):
     """
     ### Summary:
         This function will process a beautiful soup input to output any data that
         the user specifies.
 
     ### Args:
-        soup (str): A beautiful soup object that needs to be processed.
-        row_details: The row that the page is on. Mainly used for the html id and class tags.
+        soup (str): 
+            A beautiful soup object that needs to be processed.
+        row_details (dataframe): 
+            The row that the page is on. Mainly used for the html id and class tags.
+        site_output_folder (str): The path to the output folder for the site.
     ### Returns:
         None
     """
