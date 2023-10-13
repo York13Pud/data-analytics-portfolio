@@ -11,8 +11,8 @@ def replace_chars(text_to_check: str):
             A string of text to check and replace characters with underscores.
 
     ### Returns:
-        String: 
-            A string with the 
+        String (str): 
+            A string with the updated text.
     """
     text_to_replace = [" ", ".", ",", "!", "*", "/", "+", ":", \
                        ";", "\\", "$", "£", "€", "@" ]
