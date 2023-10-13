@@ -35,9 +35,12 @@ def main():
 
     ALL_SITES_DIR = f"{APP_DIR}/sites/"
     SITE_FILES = ["pages.xlsx", "processor.py"]
+    
+    # -- Create a list of all the sub-folders in ALL_SITES_DIR.
     SITE_FOLDER_CONTENTS = [folder_name for folder_name in \
                             Path(ALL_SITES_DIR).iterdir() \
-                            if not folder_name.name.startswith(".")]
+                            if not folder_name.name.startswith(".") \
+                            if folder_name.is_dir()]
     
     # -- Collect info about the Operating System the program is running on:
     OS_INFO = get_os_summary()
