@@ -21,9 +21,8 @@ def export_to_csv(df: pd.DataFrame,
     ### Returns:
         None
     """
-    
     df.to_csv(f"{filepath}/{filename}.csv", 
-              index = False)
+        index = False)
     
     return
     
