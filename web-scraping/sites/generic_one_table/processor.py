@@ -70,12 +70,15 @@ def process_soup(soup: str,
                     
             table_data.append(row_data)        
 
-        # -- To-do: Check for empty row and if found delete them.
-        # -- Remove the blank list from the table_data list:
-        table_data.pop(0)
+        # -- Check and remove any blank lists from the table_data list:
+        for index, item in enumerate(table_data):
+            if item == []:
+                print("item is empty")
+                table_data.pop(index)
         
         # -- Create a dataframe from the column_names and table_data lists:
-        df = pd.DataFrame(table_data, columns = column_names)
+        df = pd.DataFrame(table_data, 
+                          columns = column_names)
         
         # -- Create the output folder(s) as needed and then save the df to an
         # -- Excel file:
