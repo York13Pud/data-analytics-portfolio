@@ -5,8 +5,8 @@ from modules.get_os_details import get_os_summary
 from modules.scraper import processor
 
 import pandas as pd
+# import modules.config
 
-# -- To-do: Add error checking. After that is done, add logging.
 
 def main():
     """
