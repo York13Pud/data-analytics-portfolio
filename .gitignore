@@ -195,4 +195,5 @@ video-game-console-sales/data/
 video-game-sales/data/
 
 # web scraping
+web-scraping/logs/
 web-scraping/output/
