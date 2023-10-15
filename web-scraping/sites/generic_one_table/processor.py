@@ -2,6 +2,7 @@
 from datetime import datetime
 from pathlib import Path
 
+from modules.config import LOGS_DIR
 from modules.export_files import export_to_excel
 
 import pandas as pd
