@@ -1,3 +1,7 @@
+# -- Import required libraries / modules:
+from modules.config import LOGS_DIR
+
+
 def replace_chars(text_to_check: str):
     """
     ### Summary:
