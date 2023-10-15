@@ -51,7 +51,6 @@ def url_scraper(url: str,
 
 def processor(allowed_http_responses: pd.DataFrame,
               browser_headers_os: pd.DataFrame,
-            #   output_folder: str,
               site_folder: str):
     """
     ### Summary:
@@ -70,8 +69,6 @@ def processor(allowed_http_responses: pd.DataFrame,
         browser_headers_os (pd.DataFrame): 
             A filtered dataframe of browsers and
             headings for the operating system the program is running on.
-        output_folder (str): 
-            The full path for the root of the output folder.
         site_folder (str): 
             The full path for the site folder that is being processed.
     
