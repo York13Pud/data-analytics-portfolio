@@ -6,6 +6,7 @@ from pathlib import Path
 from sys import modules
 
 from modules.replace import replace_chars
+from modules.config import LOGS_DIR, OUTPUT_DIR
 
 import pandas as pd
 
@@ -50,7 +51,7 @@ def url_scraper(url: str,
 
 def processor(allowed_http_responses: pd.DataFrame,
               browser_headers_os: pd.DataFrame,
-              output_folder: str,
+            #   output_folder: str,
               site_folder: str):
     """
     ### Summary:
@@ -88,7 +89,7 @@ def processor(allowed_http_responses: pd.DataFrame,
     site_name = site_name[1]
     site_name = replace_chars(text_to_check = site_name)
     
-    site_output_folder = str(f"{output_folder}{site_name}")
+    site_output_folder = str(f"{OUTPUT_DIR}{site_name}")
     
     # -- Check to see if there is a folder in the output directory for the
     # -- site. If not, create it. If so, carry on:
