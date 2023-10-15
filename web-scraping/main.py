@@ -5,7 +5,7 @@ from modules.get_os_details import get_os_summary
 from modules.scraper import processor
 
 import pandas as pd
-# import modules.config
+from modules.config import ALL_SITES_DIR, LOGS_DIR, OUTPUT_DIR, SETTINGS_DIR
 
 
 def main():
@@ -28,12 +28,6 @@ def main():
     
     # -- Define general constants and variables:
     # -- Folders for various settings:
-    APP_DIR = Path(__file__).resolve().parent
-    LOGS_DIR = f"{APP_DIR}/logs/"
-    OUTPUT_DIR = f"{APP_DIR}/output/"
-    SETTINGS_DIR = f"{APP_DIR}/settings/"
-
-    ALL_SITES_DIR = f"{APP_DIR}/sites/"
     SITE_FILES = ["pages.xlsx", "processor.py"]
     
     # -- Create a list of all the sub-folders in ALL_SITES_DIR.
