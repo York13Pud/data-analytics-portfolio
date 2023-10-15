@@ -5,6 +5,8 @@
 
 
 # -- Import required libraries / modules:
+from modules.config import LOGS_DIR
+
 import platform
 
 
