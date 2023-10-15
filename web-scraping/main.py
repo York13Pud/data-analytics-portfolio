@@ -68,7 +68,6 @@ def main():
                 browser_headers_os = browser_headers_df.loc[\
                                 (browser_headers_df.os == OS_INFO["os_type"])],
                 allowed_http_responses = allowed_http_responses_df.values,
-                output_folder = OUTPUT_DIR,
                 site_folder = folder)
 
         else:
