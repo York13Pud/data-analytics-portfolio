@@ -5,7 +5,7 @@ from modules.get_os_details import get_os_summary
 from modules.scraper import processor
 
 import pandas as pd
-from modules.config import ALL_SITES_DIR, LOGS_DIR, OUTPUT_DIR, SETTINGS_DIR
+from modules.config import ALL_SITES_DIR, LOGS_DIR, SETTINGS_DIR, logger
 
 
 def main():
@@ -26,6 +26,11 @@ def main():
         None.
     """
     
+    # -- Initialise logging:
+    log_main = logger(name = __name__, log_folder = f"{LOGS_DIR}/main.log")
+    
+    log_main.info("===== Starting program =====")
+    
     # -- Define general constants and variables:
     # -- Folders for various settings:
     SITE_FILES = ["pages.xlsx", "processor.py"]
@@ -37,16 +42,27 @@ def main():
                             if folder_name.is_dir()]
     
     # -- Collect info about the Operating System the program is running on:
+    log_main.info("Collecting Operating System Information")
     OS_INFO = get_os_summary()
 
     # -- Import settings from excel files:
     # -- HTTP responses:
     allowed_http_responses_file = f"{SETTINGS_DIR}allowed-http-responses.xlsx"
-    allowed_http_responses_df = pd.read_excel(io = allowed_http_responses_file)
+    log_main.info(f"Loading allowed-http-responses.xlsx in {SETTINGS_DIR}")
+    
+    try:
+        allowed_http_responses_df = pd.read_excel(io = allowed_http_responses_file)
+    except FileNotFoundError as e:
+        log_main.error(f"Could not find allowed-http-responses.xlsx file in {SETTINGS_DIR}")
 
     # -- Web browser headers:
     browser_headers_file = f"{SETTINGS_DIR}headers.xlsx"
-    browser_headers_df = pd.read_excel(io = browser_headers_file)
+    log_main.info(f"Loading headers.xlsx in {SETTINGS_DIR}")
+    
+    try:
+        browser_headers_df = pd.read_excel(io = browser_headers_file)
+    except FileNotFoundError:
+        log_main.error(f"Could not find headers.xlsx file in {SETTINGS_DIR}")
 
     # ------------------------------------------------------------------------ #
 
@@ -64,18 +80,22 @@ def main():
             print("Files are present")
             
             # -- Execute the processor:
-            processor(\
-                browser_headers_os = browser_headers_df.loc[\
+            processor(browser_headers_os = browser_headers_df.loc[\
                                 (browser_headers_df.os == OS_INFO["os_type"])],
-                allowed_http_responses = allowed_http_responses_df.values,
-                site_folder = folder)
+                      allowed_http_responses = allowed_http_responses_df.values,
+                      site_folder = folder)
 
         else:
             # -- To-do: Generate error and log.
+            log_main.error("")
             print("\n--- Error ---")
             print(f"pages.xlsx present: {pages_file}")
             print(f"processor.py present: {processor_file}")
             print("\nPlease check that the files showing as False are present.")
+    
+    log_main = logger(name = "main_end", log_folder = f"{LOGS_DIR}/main.log")
+    
+    log_main.info("===== Stopping program =====")
     
     return
 
