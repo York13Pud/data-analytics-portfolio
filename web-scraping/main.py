@@ -27,7 +27,7 @@ def main():
     """
     
     # -- Initialise logging:
-    log_main = logger(name = __name__, log_folder = f"{LOGS_DIR}/main.log")
+    log_main = logger(name = "main.start", log_folder = f"{LOGS_DIR}/main.log")
     
     log_main.info("===== Starting program =====")
     
@@ -93,7 +93,7 @@ def main():
             print(f"processor.py present: {processor_file}")
             print("\nPlease check that the files showing as False are present.")
     
-    log_main = logger(name = "main_end", log_folder = f"{LOGS_DIR}/main.log")
+    log_main = logger(name = "main.end", log_folder = f"{LOGS_DIR}/main.log")
     
     log_main.info("===== Stopping program =====")
     
