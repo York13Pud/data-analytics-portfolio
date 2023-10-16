@@ -6,7 +6,7 @@ from modules.config import logger, LOGS_DIR
 from modules.export_files import export_to_excel
 
 import pandas as pd
-
+import inspect
 
 def process_soup(soup: str, 
                  row_details: pd.DataFrame, 
@@ -30,14 +30,19 @@ def process_soup(soup: str,
     site_log_folder = str(Path(__file__).resolve().parent).rsplit('/', 1)
     site_log_folder_full_path = f"{LOGS_DIR}{site_log_folder[1]}"
     
+    log = logger(name = f"sites.{site_log_folder[1]}.{__name__}.{inspect.stack()[0][3]}.{str(row_details.nickname).lower()}", 
+                 log_folder = f"{LOGS_DIR}main.log")
+
     #site_output_folder_full_path = Path(str(f"{site_output_folder}/{todays_date.year}/{todays_date.month}/{todays_date.day}/"))
     
-    try:
-        Path(str(site_log_folder_full_path)).mkdir(parents = True)
-    except FileExistsError:
-        pass   
-    log = logger(name = __name__, log_folder = f"{LOGS_DIR}main.log")
-    #log = logger(name = __name__, log_folder = f"{site_log_folder_full_path}/generic.log")
+    # try:
+    #     Path(str(site_log_folder_full_path)).mkdir(parents = True)
+    # except FileExistsError:
+    #     pass   
+    
+    
+    # log = logger(name = __name__, log_folder = f"{LOGS_DIR}main.log")
+    # log = logger(name = __name__, log_folder = f"{site_log_folder_full_path}/generic.log")
     
     # logger = logging.getLogger(__name__)
     # handler = logging.FileHandler(f"{site_log_folder_full_path}/generic.log")
