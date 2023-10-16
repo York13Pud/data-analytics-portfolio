@@ -2,7 +2,7 @@
 from datetime import datetime
 from pathlib import Path
 
-from modules.config import LOGS_DIR
+from modules.config import logger, LOGS_DIR
 from modules.export_files import export_to_excel
 
 import pandas as pd
@@ -26,10 +26,31 @@ def process_soup(soup: str,
         None
     """
     
+    # -- Initialise logging configuration:
+    site_log_folder = str(Path(__file__).resolve().parent).rsplit('/', 1)
+    site_log_folder_full_path = f"{LOGS_DIR}{site_log_folder[1]}"
+    
+    #site_output_folder_full_path = Path(str(f"{site_output_folder}/{todays_date.year}/{todays_date.month}/{todays_date.day}/"))
+    
+    try:
+        Path(str(site_log_folder_full_path)).mkdir(parents = True)
+    except FileExistsError:
+        pass   
+    log = logger(name = __name__, log_folder = f"{LOGS_DIR}main.log")
+    #log = logger(name = __name__, log_folder = f"{site_log_folder_full_path}/generic.log")
+    
+    # logger = logging.getLogger(__name__)
+    # handler = logging.FileHandler(f"{site_log_folder_full_path}/generic.log")
+    # formatter = logging.Formatter("%(levelname)s:%(asctime)s:%(name)s:%(message)s")
+    # handler.setFormatter(fmt = formatter)
+    # logger.addHandler(handler)
+    
+
+    
     # ==================================================================== #
     # -- Place your code below to process the page into whatever format(s)
     # -- you would like:
-    
+    log.info(msg = f"({site_log_folder[1]}) Processing soup for {row_details.nickname}")
     # -- Construct the attributes to use to find the table:
     table_attributes = {}
     
@@ -53,7 +74,7 @@ def process_soup(soup: str,
     else:
         column_names = []
         table_data = []
-            
+
         table = soup.find("table", attrs = table_attributes)
         
         # -- Look for rows in the HTML table:
