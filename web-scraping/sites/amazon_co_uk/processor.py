@@ -4,8 +4,9 @@ from pathlib import Path
 
 from modules.config import logger, LOGS_DIR
 
-import logging
+import inspect
 import pandas as pd
+
 
 def process_soup(soup: str, 
                  row_details: pd.DataFrame, 
@@ -29,12 +30,12 @@ def process_soup(soup: str,
     site_log_folder = str(Path(__file__).resolve().parent).rsplit('/', 1)
     site_log_folder_full_path = f"{LOGS_DIR}{site_log_folder[1]}"
     
-    try:
-        Path(str(site_log_folder_full_path)).mkdir(parents = True)
-    except FileExistsError:
-        pass   
+    # try:
+    #     Path(str(site_log_folder_full_path)).mkdir(parents = True)
+    # except FileExistsError:
+    #     pass   
     
-    log = logger(name = f"{site_log_folder[1]}-{__name__}-{row_details.nickname}", log_folder = f"{LOGS_DIR}main.log")
+    log = logger(name = f"sites.{site_log_folder[1]}.{__name__}.{inspect.stack()[0][3]}.{str(row_details.nickname).lower()}", log_folder = f"{LOGS_DIR}main.log")
     
     # ==================================================================== #
     # -- Place your code below to process the page into whatever format(s)
