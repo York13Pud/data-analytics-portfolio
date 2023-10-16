@@ -2,6 +2,7 @@
 from pathlib import Path
 
 import logging
+import logging.config
 
 
 # -- Define general constants and variables:
@@ -16,3 +17,37 @@ SITE_FILES = ["pages.xlsx", "processor.py"]
 
 
 # -- Setup logging settings:
+def logger(name: str, log_folder: str):
+    logging.config.dictConfig({
+        'version': 1,
+        'disable_existing_loggers': True,
+        'formatters': {
+            'console': {
+                'format': '%(levelname)s:%(asctime)s:%(name)s:%(message)s'
+            },
+            'file': {
+                'format': '%(levelname)s:%(asctime)s:%(name)s:%(message)s'
+            }
+        },
+        'handlers': {
+            'console': {
+                'class': 'logging.StreamHandler',
+                'formatter': 'console'
+            },
+            'file': {
+                'level': 'INFO',
+                'class': 'logging.FileHandler',
+                'formatter': 'file',
+                'filename': log_folder
+            }
+        },
+        'loggers': {
+            '': {
+                'level': 'DEBUG',
+                'handlers': ['file'],
+                'propagate': True,
+            }
+        }
+    })
+
+    return logging.getLogger(name)
