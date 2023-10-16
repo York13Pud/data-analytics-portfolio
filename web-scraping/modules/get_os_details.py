@@ -5,7 +5,7 @@
 
 
 # -- Import required libraries / modules:
-from modules.config import LOGS_DIR
+from modules.config import logger, LOGS_DIR
 
 import platform
 
@@ -32,8 +32,13 @@ def get_os_summary():
                 The O/S architecture (32bit or 64bit) (lowercase).
     """
     
-    # --- Check the O/S name and if it is Darwin, change it to macos.
-    # --- Linux and windows don't need any other changes.
+    # -- Initialise logging:
+    log_main = logger(name = __name__, log_folder = f"{LOGS_DIR}/main.log")
+    
+    log_main.info("Collecting operating system information")
+    
+    # -- Check the O/S name and if it is Darwin, change it to macos.
+    # -- Linux and windows don't need any other changes.
     if platform.system() == "Darwin":
         os_name = "macos".lower()
         os_release = platform.mac_ver()[0].lower()
@@ -41,11 +46,16 @@ def get_os_summary():
         os_name = platform.system().lower()
         os_release = platform.release().lower()
 
-    # --- Return the details about the O/S / system:
-    return {
+    # -- Create a dictionary with the O/S details in: 
+    os_details = {
         "hostname": str(platform.node().lower()), 
         "os_type": str(os_name.lower()), 
         "os_version": str(os_release.lower()), 
         "os_arch": str(platform.architecture()[0].lower()),
         "cpu_arch": str(platform.machine().lower())
     }
+    
+    log_main.info(f"O/S details: {os_details}")
+    
+    # --- Return the details about the O/S / system:
+    return os_details
