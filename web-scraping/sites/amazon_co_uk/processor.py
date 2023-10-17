@@ -1,10 +1,6 @@
 # -- Import required libraries / modules:
-from datetime import datetime
-from pathlib import Path
-
-from modules.config import logger, LOGS_DIR
-
-import inspect
+import logging
+import os
 import pandas as pd
 
 
@@ -25,18 +21,10 @@ def process_soup(soup: str,
     ### Returns:
         None
     """
-    
-    # -- Initialise logging configuration:
-    site_log_folder = str(Path(__file__).resolve().parent).rsplit('/', 1)
-    site_log_folder_full_path = f"{LOGS_DIR}{site_log_folder[1]}"
-    
-    # try:
-    #     Path(str(site_log_folder_full_path)).mkdir(parents = True)
-    # except FileExistsError:
-    #     pass   
-    
-    log = logger(name = f"sites.{site_log_folder[1]}.{__name__}.{inspect.stack()[0][3]}.{str(row_details.nickname).lower()}", log_folder = f"{LOGS_DIR}main.log")
-    
+   
+    # -- Initialise logging:
+    log = logging.getLogger(f"{os.getenv('SCRAPER_APP_NAME')}.{__name__}")
+   
     # ==================================================================== #
     # -- Place your code below to process the page into whatever format(s)
     # -- you would like:
