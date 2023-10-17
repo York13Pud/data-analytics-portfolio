@@ -1,5 +1,7 @@
 # -- Import required libraries / modules:
-from modules.config import LOGS_DIR
+import inspect
+import logging
+import os
 
 
 def replace_chars(text_to_check: str):
@@ -18,10 +20,18 @@ def replace_chars(text_to_check: str):
         String (str): 
             A string with the updated text.
     """
+    
+    # -- Initialise logging:
+    log = logging.getLogger(f"{os.getenv('SCRAPER_APP_NAME')}.{__name__}.{inspect.stack()[0][3]}")
+    
+    log.info(f"Replacing characters in {text_to_check}.")
+    
     text_to_replace = [" ", ".", ",", "!", "*", "/", "+", ":", \
                        ";", "\\", "$", "£", "€", "@" ]
     
     for char in text_to_replace:
-        string = text_to_check.replace(char, "_")
+        new_string = text_to_check.replace(char, "_")
     
-    return str(string)
+    log.info(f"Replacing characters in {text_to_check} completed. New string is {new_string}.")
+    
+    return str(new_string)
