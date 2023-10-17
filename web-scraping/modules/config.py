@@ -20,7 +20,7 @@ SITE_FILES = ["pages.xlsx", "processor.py"]
 def logger(name: str, log_folder: str):
     logging.config.dictConfig({
         'version': 1,
-        'disable_existing_loggers': True,
+        'disable_existing_loggers': False,
         'formatters': {
             'console': {
                 'format': '%(levelname)s:%(asctime)s:%(name)s:%(message)s'
