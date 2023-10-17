@@ -1,12 +1,7 @@
-# -- Version 1.0
-# -- Created by: dev_neil_a
-# -- Created: 2023-10-02
-# -- Updated: 2023-10-02
-
-
 # -- Import required libraries / modules:
-from modules.config import logger, LOGS_DIR
-
+import inspect
+import logging
+import os
 import platform
 
 
@@ -33,9 +28,9 @@ def get_os_summary():
     """
     
     # -- Initialise logging:
-    log = logger(name = __name__, log_folder = f"{LOGS_DIR}/main.log")
+    log = logging.getLogger(f"{os.getenv('SCRAPER_APP_NAME')}.{__name__}.{inspect.stack()[0][3]}")
     
-    log.info("Collecting operating system information")
+    log.info("Collecting operating system information.")
     
     # -- Check the O/S name and if it is Darwin, change it to macos.
     # -- Linux and windows don't need any other changes.
@@ -55,9 +50,9 @@ def get_os_summary():
         "cpu_arch": str(platform.machine().lower())
     }
     
-    log.info(f"O/S details: {os_details}")
+    log.info(f"O/S details: {os_details}.")
     
-    log.info(f"Collecting operating system information completed")
+    log.info(f"Collecting operating system information completed.")
     
     # --- Return the details about the O/S / system:
     return os_details
