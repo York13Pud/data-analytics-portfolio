@@ -33,9 +33,9 @@ def get_os_summary():
     """
     
     # -- Initialise logging:
-    log_main = logger(name = __name__, log_folder = f"{LOGS_DIR}/main.log")
+    log = logger(name = __name__, log_folder = f"{LOGS_DIR}/main.log")
     
-    log_main.info("Collecting operating system information")
+    log.info("Collecting operating system information")
     
     # -- Check the O/S name and if it is Darwin, change it to macos.
     # -- Linux and windows don't need any other changes.
@@ -55,7 +55,9 @@ def get_os_summary():
         "cpu_arch": str(platform.machine().lower())
     }
     
-    log_main.info(f"O/S details: {os_details}")
+    log.info(f"O/S details: {os_details}")
+    
+    log.info(f"Collecting operating system information completed")
     
     # --- Return the details about the O/S / system:
     return os_details
