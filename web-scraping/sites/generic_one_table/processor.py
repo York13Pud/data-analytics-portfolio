@@ -40,18 +40,6 @@ def process_soup(soup: str,
     # except FileExistsError:
     #     pass   
     
-    
-    # log = logger(name = __name__, log_folder = f"{LOGS_DIR}main.log")
-    # log = logger(name = __name__, log_folder = f"{site_log_folder_full_path}/generic.log")
-    
-    # logger = logging.getLogger(__name__)
-    # handler = logging.FileHandler(f"{site_log_folder_full_path}/generic.log")
-    # formatter = logging.Formatter("%(levelname)s:%(asctime)s:%(name)s:%(message)s")
-    # handler.setFormatter(fmt = formatter)
-    # logger.addHandler(handler)
-    
-
-    
     # ==================================================================== #
     # -- Place your code below to process the page into whatever format(s)
     # -- you would like:
@@ -122,7 +110,8 @@ def process_soup(soup: str,
         # -- Export df to an Excel file:
         export_to_excel(df = df, 
                         filepath = site_output_folder_full_path, 
-                        filename = str(f"{todays_date}-{current_time}-{row_details.nickname}")) 
+                        filename = str(f"{todays_date}-{current_time}-{row_details.nickname}",),
+                        nickname = row_details.nickname)
          
         # ==================================================================== #
         return
