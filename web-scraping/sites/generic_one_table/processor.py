@@ -2,14 +2,17 @@
 from datetime import datetime
 from pathlib import Path
 
-from modules.config import logger, LOGS_DIR
 from modules.export_files import export_to_excel
 
-import pandas as pd
 import inspect
+import logging
+import os
+import pandas as pd
+
 
 def process_soup(soup: str, 
-                 row_details: pd.DataFrame, 
+                 row_details: pd.DataFrame,
+                 site_name: str, 
                  site_output_folder: str):
     """
     ### Summary:
@@ -21,29 +24,23 @@ def process_soup(soup: str,
             A beautiful soup object that needs to be processed.
         row_details (dataframe): 
             The row that the page is on. Mainly used for the html id and class tags.
-        site_output_folder (str): The path to the output folder for the site.
+        site_name (str):
+            The name of the folder that the site is named after.
+        site_output_folder (str): 
+            The path to the output folder for the site.
     ### Returns:
         None
     """
     
-    # -- Initialise logging configuration:
-    site_log_folder = str(Path(__file__).resolve().parent).rsplit('/', 1)
-    site_log_folder_full_path = f"{LOGS_DIR}{site_log_folder[1]}"
-    
-    log = logger(name = f"sites.{site_log_folder[1]}.{__name__}.{inspect.stack()[0][3]}.{str(row_details.nickname).lower()}", 
-                 log_folder = f"{LOGS_DIR}main.log")
-
-    #site_output_folder_full_path = Path(str(f"{site_output_folder}/{todays_date.year}/{todays_date.month}/{todays_date.day}/"))
-    
-    # try:
-    #     Path(str(site_log_folder_full_path)).mkdir(parents = True)
-    # except FileExistsError:
-    #     pass   
+    # -- Initialise logging:
+    log = logging.getLogger(f"{os.getenv('SCRAPER_APP_NAME')}.sites.{site_name}.{__name__}.{inspect.stack()[0][3]}.{row_details.nickname}")
     
     # ==================================================================== #
     # -- Place your code below to process the page into whatever format(s)
     # -- you would like:
-    log.info(msg = f"({site_log_folder[1]}) Processing soup for {row_details.nickname}")
+    
+    log.info(f"Processing soup.")
+    
     # -- Construct the attributes to use to find the table:
     table_attributes = {}
     
@@ -62,7 +59,8 @@ def process_soup(soup: str,
     # -- Check if table attributes is empty or not:
     if table_attributes == {}:
         # -- To-do: Raise warning that nothing was supplied and page skipped:
-        print("Nothing to do as no id or class tags have been supplied.")
+        log.error(f"Nothing to do for {row_details.nickname} as no id and / or class tags have been supplied.")
+        print(f"Nothing to do for {row_details.nickname} as no id and / or class tags have been supplied.")
         return
     else:
         column_names = []
@@ -70,6 +68,7 @@ def process_soup(soup: str,
 
         table = soup.find("table", attrs = table_attributes)
         
+        log.info(f"Processing table data from scraped HTML.")
         # -- Look for rows in the HTML table:
         for item in table.find_all('tr'):
             
@@ -85,13 +84,16 @@ def process_soup(soup: str,
                     
             table_data.append(row_data)        
 
+        log.info(f"Completed processing table data from scraped HTML.")
+        
         # -- Check and remove any blank lists from the table_data list:
+        log.info(f"Checking for empty rows and removing them.")
         for index, item in enumerate(table_data):
             if item == []:
-                print("item is empty")
                 table_data.pop(index)
         
         # -- Create a dataframe from the column_names and table_data lists:
+        log.info(f"Creating pandas dataframe from scraped table.")
         df = pd.DataFrame(table_data, 
                           columns = column_names)
         
@@ -101,17 +103,20 @@ def process_soup(soup: str,
         current_time = datetime.now().time()
         
         site_output_folder_full_path = Path(str(f"{site_output_folder}/{todays_date.year}/{todays_date.month}/{todays_date.day}/"))
-               
+        
+        log.info(f"Creating folder to output files to. Folder path is {site_output_folder_full_path}.")
         try:
             site_output_folder_full_path.mkdir(parents = True)
         except FileExistsError:
+            log.info(f"Folder to output files to. in path is {site_output_folder_full_path} already exists. Continuing.")
             pass
         
         # -- Export df to an Excel file:
         export_to_excel(df = df, 
                         filepath = site_output_folder_full_path, 
                         filename = str(f"{todays_date}-{current_time}-{row_details.nickname}",),
-                        nickname = row_details.nickname)
-         
+                        nickname = row_details.nickname,
+                        site_name = site_name)
+        
         # ==================================================================== #
         return
