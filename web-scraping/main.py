@@ -2,7 +2,7 @@
 from datetime import datetime
 from pathlib import Path
 
-from modules.config import ALL_SITES_DIR, LOGS_DIR, SETTINGS_DIR, logger
+from modules.config import ALL_SITES_DIR, LOGS_DIR, OUTPUT_DIR, SETTINGS_DIR, logger
 from modules.get_os_details import get_os_summary
 from modules.scraper import processor
 
@@ -48,6 +48,16 @@ def main():
                       log_folder = f"{os.getenv('TODAYS_LOGS_DIR')}/main.log")
             
     log_main.info("===== Starting program =====")
+    
+    # -- Set the name of the folder to save files to:
+    output_folder = Path(f"{OUTPUT_DIR}")
+    
+    # -- Check to see if there is a folder for the output directory.
+    # -- If not, create it. If so, carry on:
+    try:
+        output_folder.mkdir(parents = True)
+    except FileExistsError:
+        pass
     
     # -- Define general constants and variables:
     # -- Folders for various settings:
