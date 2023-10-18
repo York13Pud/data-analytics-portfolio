@@ -115,14 +115,15 @@ def processor(allowed_http_responses: pd.DataFrame,
         return
     
     # -- Set the name of the folder to save files to:
-    site_output_folder = str(f"{OUTPUT_DIR}{site_name}")
+    site_output_folder = Path(f"{OUTPUT_DIR}{site_name}")
     
     # -- Check to see if there is a folder in the output directory for the
     # -- site. If not, create it. If so, carry on:
     try:
-        Path.mkdir(site_output_folder)
+        site_output_folder.mkdir()
     except FileExistsError:
         pass
+    
     
     log.info(f"Folder to save files to has been created. Location is {site_output_folder}.")
     
