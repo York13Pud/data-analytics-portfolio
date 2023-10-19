@@ -4,7 +4,7 @@
 
 The source for the data used in this project can be located [here](https://www.vgchartz.com/charts/platform_totals/Hardware.php).
 
-## Plan
+## Requirements
 
 1. Scrape the table from the above link.
 2. Convert it into a Pandas dataframe.
@@ -13,6 +13,7 @@ The source for the data used in this project can be located [here](https://www.v
    2. Categorise the consoles as portable, traditional or other. Perhaps there are other categories that could be used as well.
    3. Year or release.
    4. Year of discontinuation.
+   5. Failure rate of the system.
 4. Perform some initial EDA to see what insights can be extracted from the data.
 5. Save the dataframe contents to a CSV file.
 6. Create a database after normalising the data and looking to see if there are any other useful data points. For example, have a table that lists details about each company.
