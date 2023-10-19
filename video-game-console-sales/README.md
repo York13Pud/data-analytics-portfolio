@@ -4,6 +4,13 @@
 
 The source for the data used in this project can be located [here](https://www.vgchartz.com/charts/platform_totals/Hardware.php).
 
+Further details have been obtained from the below:
+
+- https://necretro.org/PC_Engine_SuperGrafx
+- https://www.macrotrends.net/2575/us-dollar-yuan-exchange-rate-historical-chart
+- https://www.videogameconsolelibrary.com
+- https://en.wikipedia.org/
+
 ## Requirements
 
 1. Scrape the table from the above link.
@@ -20,6 +27,8 @@ The source for the data used in this project can be located [here](https://www.v
 7. Perform further EDA and finalise the insights to report on.
 8. Create visualisations and reports.
 9. Create a presentation with the findings.
+
+
 
 ## Requirements
 
