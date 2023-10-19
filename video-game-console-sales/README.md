@@ -9,7 +9,10 @@ Further details have been obtained from the below:
 - https://necretro.org/PC_Engine_SuperGrafx
 - https://www.macrotrends.net/2575/us-dollar-yuan-exchange-rate-historical-chart
 - https://www.videogameconsolelibrary.com
+- https://www.computinghistory.org.uk/det/67123/Super-Cassette-Vision/
 - https://en.wikipedia.org/
+
+**NOTE** Pandora console was removed as it is mostly used for emulation and has no real native games.
 
 ## Requirements
 
