@@ -14,6 +14,11 @@ Further details have been obtained from the below:
 
 **NOTE** Pandora console was removed as it is mostly used for emulation and has no real native games.
 
+Failure rate information:
+https://www.squaretrade.com/htm/pdf/SquareTrade_Xbox360_PS3_Wii_Reliability_0809.pdf
+
+Average determined to be ~7.5% (wii @ 2.7% rounded to 3 and end being PS3 @ 10. Halfway = 7.5%)
+
 ## Requirements
 
 1. Scrape the table from the above link.
