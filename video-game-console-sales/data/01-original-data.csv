@@ -1,0 +1,84 @@
+Platform,North America,Europe,Japan,Rest of World,unknown_sales,Global,,released_date,discontinued_date,failure_rate_percentage,vendor,id
+PlayStation 2 (PS2),53.65,55.28,23.18,26.59,,158.7,,,,,,1
+Nintendo DS (DS),57.92,51.84,32.99,11.28,,154.02,,,,,,2
+Nintendo Switch (NS),46.17,33.11,30.46,19.68,,129.42,,,,,,3
+Game Boy (GB),43.18,40.05,32.47,2.99,,118.69,,,,,,4
+PlayStation 4 (PS4),38.08,45.86,9.65,23.52,,117.11,,,,,,5
+PlayStation (PS),40.78,31.09,21.59,9.04,,102.49,,,,,,6
+Nintendo Wii (Wii),45.51,33.12,12.77,10.23,,101.63,,,,,,7
+PlayStation 3 (PS3),29.92,30.87,10.47,16.14,,87.4,,,,,,8
+Xbox 360 (X360),47.09,25.08,1.66,11.9,,85.73,,,,,,9
+Game Boy Advance (GBA),40.39,21.31,16.96,2.85,,81.51,,,,,,10
+PlayStation Portable (PSP),21.41,24.39,20.01,14.98,,80.79,,,,,,11
+Nintendo 3DS (3DS),25.47,20.45,24.67,5.35,,75.94,,,,,,12
+Nintendo Entertainment System (NES),33.49,8.3,19.35,0.77,,61.91,,,,,,13
+Xbox One (XOne),32.97,14.86,0.12,10.02,,57.96,,,,,,14
+Super Nintendo Entertainment System (SNES),22.88,8.15,17.17,0.9,,49.1,,,,,,15
+PlayStation 5 (PS5),16.75,13.17,4.23,8.07,,42.23,,,,,,16
+Sega Genesis (GEN),18.5,8.39,3.58,3.59,,34.06,,,,,,17
+Nintendo 64 (N64),20.11,6.35,5.54,0.93,,32.93,,,,,,18
+Atari 2600 (2600),23.54,3.35,2.36,0.75,,30,,,,,,19
+Xbox (XB),15.77,7.17,0.47,1.24,,24.65,,,,,,20
+Xbox Series X/S (XS),12.47,6.43,0.49,3.84,,23.23,,,,,,21
+GameCube (GC),12.55,4.44,4.04,0.71,,21.74,,,,,,22
+Sega Master System (MS),2,6.95,2.52,9.37,,20.84,,,,,,23
+PlayStation Vita (PSV),2.7,3.94,5.73,3.44,,15.82,,,,,,24
+Nintendo Wii U (WiiU),6.15,3.27,3.33,0.82,,13.56,,,,,,25
+GameGear (GG),5.4,3.23,1.78,0.21,,10.62,,,,,,26
+TurboGrafx-16 (TG16),0.75,0,7.76,0,,10,,,,,,27
+Sega Saturn (SAT),1.83,1.1,5.8,0.53,,9.26,,,,,,28
+Dreamcast (DC),3.9,1.91,2.25,1.07,,9.13,,,,,,29
+Sega Advanced Pico Beena (Beena),0,0,0,0,,4.1,,,,,,30
+Atari 7800 (7800),3.77,0,0,0,,3.77,,,,,,31
+WonderSwan (WS),0,0,3.5,0,,3.5,,,,,,32
+Sega Pico (Pico),0,0,0,0,,3.4,,,,,,33
+Intellivision (Int),0,0,0,0,,3,,,,,,34
+N-Gage (NGage),0,0,0,0,,3,,,,,,35
+Sega CD (SCD),0,0,0.4,0,,2.24,,,,,,36
+3DO Interactive Multiplayer (3DO),0,0,0,0,,2,,,,,,37
+ColecoVision (CV),0,0,0,0,,2,,,,,,38
+Neo Geo Pocket (NGP),0,0,0.55,0,,2,,,,,,39
+Magnavox Odyssey 2 (Odys2),0,0,0,0,,2,,,,,,40
+Sega SG (SG),0,0,1.92,0,,1.92,,,,,,41
+TurboExpress (TE),0,0,0,0,,1.5,,,,,,42
+Neo Geo (NG),0,0,1,0,,1.06,,,,,,43
+Atari Lynx (Lynx),0,0,0,0,,1,,,,,,44
+Atari 5200 (5200),1,0,0,0,,1,,,,,,45
+CD-i (CDi),0.4,0,0,0,,1,,,,,,46
+Coleco Telstar (CT),1,0,0,0,,1,,,,,,47
+Dingoo (Ding),0,0,0,1,,1,,,,,,48
+Genesis Nomad (GN),1,0,0,0,,1,,,,,,49
+Sega 32X (S32X),0,0,0,0,,0.8,,,,,,50
+Virtual Boy (VB),0,0,0.14,0,,0.77,,,,,,51
+Neo Geo CD (NGCD),0,0,0,0,,0.57,,,,,,52
+Cybiko (Cyb),0,0,0,0,,0.5,,,,,,53
+PC-FX (PCFX),0,0,0.4,0,,0.4,,,,,,54
+Cassette Vision (CaVi),0,0,0.4,0,,0.4,,,,,,55
+Fairchild Channel F (FCF),0,0,0,0,,0.35,,,,,,56
+Magnavox Odyssey (Odys),0,0,0,0,,0.35,,,,,,57
+Game.com (Ga),0,0,0,0,,0.3,,,,,,58
+Super Cassette Vision (SCaVi),0,0,0.3,0,,0.3,,,,,,59
+Atari Jaguar (AJ),0,0,0,0,,0.25,,,,,,60
+Tapwave Zodiac (TZ),0,0,0,0,,0.2,,,,,,61
+Ouya (Ouya),0,0,0,0,,0.2,,,,,,62
+Neo Geo Pocket Color (NGPC),0,0.1,0.03,0,,0.13,,,,,,63
+Tomy Tutor (TT),0,0,0.12,0,,0.12,,,,,,64
+Amiga CD32 (CD32),0,0.1,0,0,,0.1,,,,,,65
+PC Engine SuperGrafx (SGrafx),0,0,0.08,0,,0.08,,,,,,66
+Game Wave (GW),0.07,0,0,0,,0.07,,,,,,67
+GP2X (GP2X),0,0,0,0.06,,0.06,,,,,,68
+RCA Studio II (RCA),0.06,0,0,0,,0.06,,,,,,69
+Playdate (PD),0,0,0,0,,0.05,,,,,,70
+APF-MP1000 (MP1000),0.05,0,0,0,,0.05,,,,,,71
+FM Towns Marty (FMTM),0,0,0.05,0,,0.05,,,,,,72
+Apple Pippin (AP),0,0,0,0,,0.04,,,,,,73
+GamePark 32 (GP32),0,0,0,0,,0.03,,,,,,74
+Gizmondo (GIZ),0,0,0,0,,0.02,,,,,,75
+Amstrad GX4000 (GX4000),0,0.02,0,0,,0.02,,,,,,76
+Commodore 64 Games System (C64GS),0,0.02,0,0,,0.02,,,,,,77
+IQue Player (IQue),0,0,0,0.01,,0.01,,,,,,78
+Tandy Video Information System (VIS),0.01,0,0,0,,0.01,,,,,,79
+HyperScan (HS),0,0,0,0,,0.01,,,,,,80
+Adventure Vision (AV),0.01,0,0,0,,0.01,,,,,,81
+Palmtex Portable Videogame System (PVS),0.01,0,0,0,,0.01,,,,,,82
+Pandora (Pa),0,0,0,0,,0.01,,,,,,83
