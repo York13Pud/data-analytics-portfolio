@@ -36,7 +36,5 @@ Average determined to be ~7.5% (wii @ 2.7% rounded to 3 and end being PS3 @ 10. 
 8. Create visualisations and reports.
 9. Create a presentation with the findings.
 
-
-
 ## Requirements
 
