@@ -33,7 +33,7 @@ def sns_barplot_ax(data: pd.DataFrame,
     
     ax.spines["right"].set_visible(False)
     
-    ax.grid(visible = True)
+    ax.grid(visible = True, axis = "x")
     
     
     return ax
