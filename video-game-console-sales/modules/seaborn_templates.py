@@ -14,7 +14,7 @@ def colours(data: pd.DataFrame):
             add_to_dict = {vendor: "#032f8a"}
             colour_pallette.update(add_to_dict)
         elif vendor == "Microsoft":
-            add_to_dict = {vendor: "#14690e"}
+            add_to_dict = {vendor: "#107910"}
             colour_pallette.update(add_to_dict)
         elif vendor == "Nintendo":
             add_to_dict = {vendor: "#d60011"}
