@@ -14,4 +14,6 @@ INNER JOIN stats_articles ON stats_articleviews.article_views_article_id_fk_id =
 
 INNER JOIN users_user ON stats_articles.article_user_id_fk_id = users_user.id /* Get the username */
 
+WHERE author = 'dev_neil_a'
+
 ORDER BY stats_articleviews.date_added DESC;
