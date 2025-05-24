@@ -6,7 +6,7 @@ import pandas as pd
 import seaborn as sns
 
 
-def colours(data: pd.DataFrame):
+def colours(data: pd.DataFrame) -> dict:
     colour_pallette = {}
 
     for vendor in data["vendor"]:
@@ -40,7 +40,7 @@ def sns_barplot_ax(data: pd.DataFrame,
                    y_axis_label: str,
                    hue: str,
                    pallette: dict,
-                   title: str):
+                   title: str) -> object:
     
     ax = sns.barplot(data = data,
                      x = x_axis, 
