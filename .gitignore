@@ -194,3 +194,4 @@ video-game-sales/data/
 # web scraping
 web-scraping/logs/
 web-scraping/output/
+video-game-console-sales/modules/__init__.py
